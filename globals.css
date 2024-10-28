@@ -3,84 +3,143 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0a; /* Cor de fundo escuro */
-  --foreground: #ededed; /* Cor de texto claro */
-  --border-color: #374151; /* Cor de borda escura */
-  --button-bg: #2563eb; /* Cor de fundo do botão escuro */
-  --button-text: #ffffff; /* Cor do texto do botão escuro */
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --primary: #1a73e8;
+  --secondary: #121212;
+  --border: #333333;
 }
 
 body {
-  @apply text-[var(--foreground)] bg-[var(--background)] font-sans;
+  background-color: var(--background);
+  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar */
+nav {
+  background-color: var(--secondary);
+}
+nav .logo {
+  color: var(--foreground);
+}
+nav .action-button {
+  background-color: transparent; /* Botões transparentes */
+  color: var(--foreground);
+  border: 1px solid transparent; /* Borda transparente inicialmente */
+  border-radius: 8px; /* Botões arredondados */
+  padding: 8px 16px;
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Suaviza a transição */
+}
+nav .action-button:hover {
+  background-color: var(--primary); /* Cor de fundo ao passar o mouse */
+  border-color: var(--primary); /* Cor da borda ao passar o mouse */
 }
 
 /* Header */
-.header {
-  @apply flex justify-between items-center p-5;
+header .logo {
+  color: var(--foreground);
+}
+header .action-button {
+  background-color: var(--primary);
+  color: var(--foreground);
+  border-radius: 5px; /* Botões arredondados */
+  padding: 2px 10px;
+  transition: background-color 0.2s ease-in-out;
+}
+header .action-button:hover {
+  background-color: #165bb3;
 }
 
-.logo {
-  @apply text-2xl;
-}
-
-.actions .action-button {
-  @apply ml-3 py-2 px-4 bg-[var(--button-bg)] text-[var(--button-text)] cursor-pointer;
-}
-
-/* Barra de pesquisa */
+/* Barra de Pesquisa */
 .search-bar {
-  @apply flex justify-between mt-5 mb-5;
+  background-color: var(--secondary);
+  border: 1px solid var(--border);
+  padding: 8px;
+  border-radius: 4px;
 }
-
 .search-input {
-  @apply py-2 px-4 mr-3 flex-grow border border-[var(--border-color)] bg-transparent text-[var(--foreground)];
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  color: var(--foreground);
 }
-
 .search-button {
-  @apply py-2 px-5 bg-[var(--button-bg)] text-[var(--button-text)] cursor-pointer;
+  background-color: var(--primary);
+  color: var(--foreground);
+  border-radius: 8px; /* Botões arredondados */
+}
+.search-button:hover {
+  background-color: #16b330;
 }
 
-/* Categorias */
-.categories {
-  @apply flex justify-around mb-5;
+/* Menu de Categorias */
+.categories .category-button {
+  background-color: #333333;
+  color: var(--foreground);
+  transition: background-color 0.2s ease;
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 4px;
+}
+.categories .category-button:hover {
+  background-color: #444444;
 }
 
-.category-button {
-  @apply py-2 px-4 bg-[var(--button-bg)] text-[var(--button-text)] cursor-pointer;
-}
-
-/* Ofertas */
-.offers {
-  @apply mb-5;
-}
-
-.offer-grid {
-  @apply grid grid-cols-4 gap-5;
-}
-
+/* Cartão de Ofertas */
 .offer-card {
-  @apply border border-[var(--border-color)] p-5 text-center bg-[var(--background)];
+  background-color: var(--secondary);
+  color: var(--foreground);
+  padding: 16px;
+  border-radius: 4px;
+  text-align: center;
+}
+.offer-card .offer-image {
+  background-color: #333333;
+  color: var(--foreground);
+  padding: 24px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+}
+.offer-location {
+  color: #bdbdbd;
+}
+.offer-price {
+  color: var(--primary);
+  font-weight: bold;
 }
 
-.offer-image {
-  @apply bg-gray-700 p-5 mb-5; /* Cor de fundo ajustada para o tema escuro */
-}
-
-/* Tabela de preços */
+/* Tabela de Preços */
 .price-table {
-  @apply mt-5;
+  background-color: var(--secondary);
+  border-collapse: collapse;
+  width: 100%;
 }
-
-.price-table table {
-  @apply w-full border-collapse bg-[var(--background)];
-}
-
-.price-table th,
-.price-table td {
-  @apply border border-[var(--border-color)] p-3 text-left text-[var(--foreground)];
-}
-
 .price-table th {
-  @apply bg-gray-800; /* Cor de fundo do cabeçalho da tabela ajustada */
+  background-color: #333333;
+  color: var(--foreground);
+  padding: 12px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+.price-table td {
+  background-color: var(--secondary);
+  color: var(--foreground);
+  padding: 12px;
+  border: 1px solid var(--border);
+}
+
+/* Efeitos de Transição */
+a, button {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar {
+  width: 100% !important;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
