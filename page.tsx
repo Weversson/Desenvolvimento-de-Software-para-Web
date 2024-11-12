@@ -1,77 +1,75 @@
-import Navbar from './components/navbar';
-import OfferCard from './components/offercard';
-import data from './data.json'; // Importando o arquivo JSON
+'use client';
 
-export default function Home() {
-  const { categorias, produtos } = data; // Desestruturando os dados do JSON
+import React, { useState } from 'react';
+import Head from 'next/head';
+
+export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || !password) {
+      setError('Por favor, preencha todos os campos.');
+      return;
+    }
+    // Lógica de autenticação aqui
+    console.log('Login submetido:', { email, password });
+    setError(''); // Limpa o erro caso a autenticação seja bem-sucedida
+  };
 
   return (
-    <div className="container mx-auto px-4">
-      <Navbar />
-      {/* Barra de Pesquisa */}
-      <div className="search-bar flex space-x-2 mb-4">
-        <input
-          type="text"
-          className="search-input flex-1 border rounded px-2 py-1"
-          placeholder="PESQUISE"
-          aria-label="Pesquisa"
-        />
-        <input
-          type="text"
-          className="search-input flex-1 border rounded px-2 py-1"
-          placeholder="FILTROS"
-          aria-label="Filtros"
-        />
-        <button className="search-button px-4 py-1">PESQUISAR</button>
-      </div>
-
-      {/* Menu de Categorias */}
-      <nav className="categories mb-4 grid grid-cols-5 gap-2">
-        {categorias.map((categoria) => (
-          <button key={categoria} className="category-button w-full">
-            {categoria}
-          </button>
-        ))}
-      </nav>
-
-      {/* Ofertas */}
-      <section className="offers mb-4">
-        <h2 className="text-xl font-bold">OFERTAS:</h2>
-        <div className="offer-grid grid grid-cols-2 md:grid-cols-4 gap-4">
-          {produtos.map((produto) => (
-            <OfferCard 
-              key={produto.nome} 
-              produto={produto.nome} 
-              preco={produto.preco} // Passando o preço
-              estado={produto.estado} // Passando o estado do produto
-            />
-          ))}
+    <>
+      <Head>
+        <title>Login - DescomplicAAgro</title>
+      </Head>
+      <div className="flex min-h-screen items-center justify-center bg-gray-100">
+        <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
+          <h2 className="text-2xl font-bold text-center text-gray-900">Login</h2>
+          {error && (
+            <div className="text-red-600 text-sm text-center">
+              {error}
+            </div>
+          )}
+          <form className="space-y-4" onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                Senha
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              Entrar
+            </button>
+          </form>
         </div>
-      </section>
-
-      {/* Tabela de Preços */}
-      <section className="price-table">
-        <table className="min-w-full border-collapse border border-gray-200">
-          <thead>
-            <tr>
-              <th className="border border-gray-300 px-4 py-2">PRODUTO</th>
-              <th className="border border-gray-300 px-4 py-2">DATA</th>
-              <th className="border border-gray-300 px-4 py-2">PREÇO</th>
-              <th className="border border-gray-300 px-4 py-2">VARIAÇÃO</th>
-            </tr>
-          </thead>
-          <tbody>
-            {produtos.map((item) => (
-              <tr key={item.nome}>
-                <td className="border border-gray-300 px-4 py-2">{item.nome}</td>
-                <td className="border border-gray-300 px-4 py-2">{item.data}</td>
-                <td className="border border-gray-300 px-4 py-2">{item.preco}</td>
-                <td className="border border-gray-300 px-4 py-2">{item.variacao}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
-    </div>
+      </div>
+    </>
   );
-}
+};
