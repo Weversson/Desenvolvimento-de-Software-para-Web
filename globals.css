@@ -3,143 +3,72 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --primary: #1a73e8;
-  --secondary: #121212;
-  --border: #333333;
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
 }
 
 body {
-  background-color: var(--background);
   color: var(--foreground);
+  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Navbar */
-nav {
-  background-color: var(--secondary);
-}
-nav .logo {
-  color: var(--foreground);
-}
-nav .action-button {
-  background-color: transparent; /* Botões transparentes */
-  color: var(--foreground);
-  border: 1px solid transparent; /* Borda transparente inicialmente */
-  border-radius: 8px; /* Botões arredondados */
-  padding: 8px 16px;
-  transition: background-color 0.3s ease, border-color 0.3s ease; /* Suaviza a transição */
-}
-nav .action-button:hover {
-  background-color: var(--primary); /* Cor de fundo ao passar o mouse */
-  border-color: var(--primary); /* Cor da borda ao passar o mouse */
-}
 
-/* Header */
-header .logo {
-  color: var(--foreground);
-}
-header .action-button {
-  background-color: var(--primary);
-  color: var(--foreground);
-  border-radius: 5px; /* Botões arredondados */
-  padding: 2px 10px;
-  transition: background-color 0.2s ease-in-out;
-}
-header .action-button:hover {
-  background-color: #165bb3;
-}
-
-/* Barra de Pesquisa */
-.search-bar {
-  background-color: var(--secondary);
-  border: 1px solid var(--border);
-  padding: 8px;
-  border-radius: 4px;
-}
-.search-input {
-  border: 1px solid var(--border);
-  background-color: var(--background);
-  color: var(--foreground);
-}
-.search-button {
-  background-color: var(--primary);
-  color: var(--foreground);
-  border-radius: 8px; /* Botões arredondados */
-}
-.search-button:hover {
-  background-color: #16b330;
-}
-
-/* Menu de Categorias */
-.categories .category-button {
-  background-color: #333333;
-  color: var(--foreground);
-  transition: background-color 0.2s ease;
-  padding: 12px 0;
-  text-align: center;
-  border-radius: 4px;
-}
-.categories .category-button:hover {
-  background-color: #444444;
-}
-
-/* Cartão de Ofertas */
-.offer-card {
-  background-color: var(--secondary);
-  color: var(--foreground);
-  padding: 16px;
-  border-radius: 4px;
-  text-align: center;
-}
-.offer-card .offer-image {
-  background-color: #333333;
-  color: var(--foreground);
-  padding: 24px;
-  margin-bottom: 8px;
-  border-radius: 4px;
-}
-.offer-location {
-  color: #bdbdbd;
-}
-.offer-price {
-  color: var(--primary);
-  font-weight: bold;
-}
-
-/* Tabela de Preços */
-.price-table {
-  background-color: var(--secondary);
-  border-collapse: collapse;
-  width: 100%;
-}
-.price-table th {
-  background-color: #333333;
-  color: var(--foreground);
-  padding: 12px;
-  text-align: left;
-  border: 1px solid var(--border);
-}
-.price-table td {
-  background-color: var(--secondary);
-  color: var(--foreground);
-  padding: 12px;
-  border: 1px solid var(--border);
-}
-
-/* Efeitos de Transição */
-a, button {
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.navbar {
-  width: 100% !important;
-}
-
-html, body {
-  margin: 0;
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  list-style: none;
   padding: 0;
-  width: 100%;
+  margin: 0;
+}
+
+.produto-card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 colunas com tamanhos iguais */
+  gap: 16px; /* Espaçamento entre os cards */
+  max-width: 200px; /* Largura máxima */
+  width: 100%; /* Preenche 100% até o máximo */
+  margin: 0 auto; /* Centraliza */
+  border: 1px solid #ddd; /* Opcional: adiciona borda */
+  border-radius: 8px; /* Bordas arredondadas */
+  padding: 16px; /* Espaçamento interno */
+  background-color: white; /* Fundo branco */
+}
+
+.produto-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.produto-imagem {
+  width: 80px;
+  height: 80px;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.produto-nome {
+  font-size: 1.2rem;
+  margin: 8px 0;
+  color: #333;
+}
+
+.produto-descricao {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.produto-preco {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #27ae60;
 }
