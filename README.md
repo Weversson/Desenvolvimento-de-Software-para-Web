@@ -61,8 +61,8 @@ Se você deseja contribuir para o **DescomplicAAgro**, siga os passos abaixo:
 ## 💬 Contatos
 
 - **E-mail:** weverssonlucas@rede.ulbra.br
-- **E-mail:** 
-- **E-mail:** 
+- **E-mail:** luansnascimentoo@rede.ulbra.br
+- **E-mail:** cabralmaialuizarthur@rede.ulbra.br
 
 
 
